@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
   },
   "keywords": [
     "cnb"
@@ -15,5 +15,8 @@
   "dependencies": {
     "dictionary-en-gb": "^2.4.0",
     "import-meta-resolve": "^3.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
   }
 }
