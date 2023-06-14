@@ -1,0 +1,18 @@
+{
+  "name": "cows-n-bulls",
+  "version": "0.0.1",
+  "description": "Cows and Bulls processor",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cnb"
+  ],
+  "author": "Shashank Sapre <shashank.sapre@outlook.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dictionary-en-gb": "^2.4.0"
+  }
+}
