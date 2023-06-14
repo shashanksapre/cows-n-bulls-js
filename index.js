@@ -2,19 +2,21 @@ import inDictionary from "./utils/checkDictionary.js";
 import hasRepeatingLetters from "./utils/repeatingLetters.js";
 import isAlphabetsOnly from "./utils/alphabetsOnly.js";
 
-const cowsAndBulls = function (word, guess) {
+const cowsAndBulls = async function (word, guess) {
   const LowerCaseGuess = guess.toLowerCase();
+  const LowerCaseWord = word.toLowerCase();
   if (
     isAlphabetsOnly(LowerCaseGuess) &&
     !hasRepeatingLetters(LowerCaseGuess) &&
-    inDictionary(LowerCaseGuess)
-    
+    (await inDictionary(LowerCaseGuess)) &&
+    guess.length == word.length
   ) {
     let CounterC = 0;
     let CounterB = 0;
-    for (alpbabet in LowerCaseGuess) {
-      if (word.includes(letter)) {
-        word.indexOf(letter) == LowerCaseGuess.indexOf(letter)
+    for (let index in LowerCaseGuess) {
+      const alphabet = LowerCaseGuess[index];
+      if (LowerCaseWord.includes(alphabet)) {
+        LowerCaseWord.indexOf(alphabet) == LowerCaseGuess.indexOf(alphabet)
           ? CounterB++
           : CounterC++;
       }

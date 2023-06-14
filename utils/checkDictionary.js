@@ -1,10 +1,10 @@
-import dictionaryEn from "dictionary-en-gb";
+import fs from "node:fs/promises";
+import { resolve } from "import-meta-resolve";
 
-const inDictionary = function (word) {
-  return dictionaryEn(function (error, en) {
-    if (error) throw error;
-    return en.dic.includes(word);
-  });
+const inDictionary = async function (word) {
+  const base = resolve("dictionary-en-gb", import.meta.url);
+  const dictionary = await fs.readFile(new URL("index.dic", base));
+  return dictionary.includes(word);
 };
 
 export default inDictionary;
