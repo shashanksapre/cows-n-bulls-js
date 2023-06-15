@@ -12,6 +12,11 @@
   ],
   "author": "Shashank Sapre <shashank.sapre@outlook.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shashanksapre/cows-n-bulls-js.git"
+  },
+  "homepage": "https://github.com/shashanksapre/cows-n-bulls-js",
   "dependencies": {
     "dictionary-en-gb": "^2.4.0",
     "import-meta-resolve": "^3.0.0"
