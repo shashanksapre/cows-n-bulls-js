@@ -1,14 +1,14 @@
-import inDictionary from "./utils/checkDictionary.js";
-import hasRepeatingLetters from "./utils/repeatingLetters.js";
-import isAlphabetsOnly from "./utils/alphabetsOnly.js";
+import Dictionary from "./utils/dictionary.js";
+import hasRepeatingLetters from "./utils/repeat.js";
+import isAlphabetsOnly from "./utils/alphabets.js";
 
-const cowsAndBulls = async function (word, guess) {
+const getHint = async function (word, guess) {
   const LowerCaseGuess = guess.toLowerCase();
   const LowerCaseWord = word.toLowerCase();
   if (
     isAlphabetsOnly(LowerCaseGuess) &&
     !hasRepeatingLetters(LowerCaseGuess) &&
-    (await inDictionary(LowerCaseGuess)) &&
+    (await Dictionary.isEnglishWord(LowerCaseGuess)) &&
     guess.length == word.length
   ) {
     let CounterC = 0;
@@ -27,4 +27,20 @@ const cowsAndBulls = async function (word, guess) {
   }
 };
 
-export default cowsAndBulls;
+const getWord = async function (length) {
+  const words = (await Dictionary.getWords())
+    .toString()
+    .split("\n")
+    .filter((word) => word.length === length)
+    .filter((word) => isAlphabetsOnly(word))
+    .filter((word) => !hasRepeatingLetters(word));
+  const selection = Math.floor(Math.random() * words.length);
+  return words[selection];
+};
+
+const CowsAndBulls = {
+  getHint,
+  getWord,
+};
+
+export default CowsAndBulls;
