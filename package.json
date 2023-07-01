@@ -1,6 +1,6 @@
 {
   "name": "cows-n-bulls-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cows and Bulls processor",
   "main": "index.js",
   "type": "module",
