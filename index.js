@@ -25,7 +25,7 @@ const getHint = async function (word, guess) {
     hasRepeatingLetters(LowerCaseWord)
   ) {
     return {
-      error: "input cannot have repeating",
+      error: "input cannot have repeating alphabets",
     };
   }
   if (
