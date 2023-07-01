@@ -1,3 +1,13 @@
+# 0.0.4
+
+## New Features
+
+- Input validation
+
+## Breaking Changes
+
+- Output structure
+
 # 0.0.3
 
 ## New Features
