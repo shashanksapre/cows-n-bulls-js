@@ -1,3 +1,9 @@
+# 0.0.5
+
+## Fixes
+
+- Error message for repeating alphabets
+
 # 0.0.4
 
 ## New Features
