@@ -1,44 +1,52 @@
-import Dictionary from "./utils/dictionary.js";
-import hasRepeatingLetters from "./utils/repeat.js";
-import isAlphabetsOnly from "./utils/alphabets.js";
+import words from "./lib/dict.js";
 
-const getHint = async function (word, guess) {
-  if (!word || word == "" || !guess || guess == "") {
+const getHint = function (word, guess) {
+  if (!guess || guess == "") {
     return {
-      error: "input cannot be empty",
+      error: "Input cannot be empty.",
     };
   }
-  if (typeof word != "string" || typeof guess != "string") {
+  if (typeof guess != "string") {
     return {
-      error: "input can only be string",
-    };
-  }
-  const LowerCaseGuess = guess.toLowerCase();
-  const LowerCaseWord = word.toLowerCase();
-  if (!isAlphabetsOnly(LowerCaseGuess) || !isAlphabetsOnly(LowerCaseWord)) {
-    return {
-      error: "input can only be have alphabets",
-    };
-  }
-  if (
-    hasRepeatingLetters(LowerCaseGuess) ||
-    hasRepeatingLetters(LowerCaseWord)
-  ) {
-    return {
-      error: "input cannot have repeating alphabets",
-    };
-  }
-  if (
-    !(await Dictionary.isEnglishWord(LowerCaseGuess)) ||
-    !(await Dictionary.isEnglishWord(LowerCaseWord))
-  ) {
-    return {
-      error: "input does not belong in dictionary",
+      error: "Input can only be string.",
     };
   }
   if (guess.length != word.length) {
     return {
-      error: "input do not have same length",
+      error: `Please guess word with ${word.length} alphabets.`,
+    };
+  }
+  const LowerCaseGuess = guess.toLowerCase();
+  const LowerCaseWord = word.toLowerCase();
+  if (LowerCaseGuess.match(/[^a-z]/g)) {
+    return {
+      error: "Guess can only have alphabets.",
+    };
+  }
+  if (words.offensive.includes(LowerCaseGuess)) {
+    return {
+      error: "Please avoid using offensive/profane words.",
+    };
+  }
+  if (/(.).*\1/.test(LowerCaseGuess)) {
+    return {
+      error: "Guess cannot have repeating alphabets.",
+    };
+  }
+  if (
+    !words.valid.includes(LowerCaseGuess) &&
+    !words.invalid.includes(LowerCaseGuess)
+  ) {
+    return {
+      error: "Guess does not belong in dictionary.",
+    };
+  }
+  if (
+    words.invalid.includes(LowerCaseGuess) &&
+    !words.valid.includes(LowerCaseGuess)
+  ) {
+    return {
+      error: "Abbreviations, Proper Names, Contractions, etc. are not allowed.",
     };
   }
   let CounterC = 0;
@@ -60,7 +68,7 @@ const getHint = async function (word, guess) {
   };
 };
 
-const getWord = async function (length) {
+const getWord = function (length) {
   if (!length) {
     return "length cannot be empty";
   }
@@ -70,14 +78,9 @@ const getWord = async function (length) {
   if (length <= 3) {
     return "length needs to be more than 3";
   }
-  const words = (await Dictionary.getWords())
-    .toString()
-    .split("\n")
-    .filter((word) => word.length === length)
-    .filter((word) => isAlphabetsOnly(word))
-    .filter((word) => !hasRepeatingLetters(word));
-  const selection = Math.floor(Math.random() * words.length);
-  return words[selection];
+  const wordList = words.valid.filter((word) => word.length === length);
+  const selection = Math.floor(Math.random() * wordList.length);
+  return wordList[selection];
 };
 
 const CowsAndBulls = {
