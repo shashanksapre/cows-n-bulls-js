@@ -1,35 +1,32 @@
 # Cows & Bulls
 
 ## Introduction
-  The game of bulls and cows but with English (UK) words.
+
+The game of bulls and cows but with English words.
 
 ## How to Play
 
-Host will select a word and give the number of alphabets in it.
+- The game will select a word and provide you with the number of alphabets in it.
 
-Player has to guess the word by typing words with same number of alphabets.
+- Your task is to guess the word by typing words that have the same number of alphabets as the selected word.
 
-As hints host will assign numbers to `C` and `B`.
+- As hints, the game will assign numbers to the letters "C" and "B".
 
-Suppose host is thinking of `FISH`.
-host will say, Guess 4
+- For example, if the game has selected the word "FISH" and tells you to guess 4, you might guess "POTS".
 
-Player might guess `POTS`
+- When comparing your guess "POTS" with the selected word "FISH", you'll notice that "POTS" has the letter "S" from "FISH", but it's not in the correct place.
 
-When we compare `FISH` with `POTS`, pots has `S` in `FISH` but it's not at the correct place
+- In response, the game will provide a hint like "POTS C1B0", indicating that there is one correct letter (the "S") but it's not in the right position.
 
-So host will respond with
-POTS C1B0
+- Based on this feedback, you can make another guess. For instance, you might try "CASE".
 
-Next player might guess `CASE`
-`CASE` has `S` and it's at the correct place
+- In this case, "CASE" has the letter "S" from "FISH", and it's in the correct position.
 
-So host will respond with
-CASE C0B1
+- The game will respond with a hint like "CASE C0B1", indicating that there are no correct letters in the correct position, but there is one correct letter in the wrong position.
 
-Player has to keep guessing until they get the right word by analysing the hints.
+- Keep guessing words by analyzing the hints provided until you correctly guess the word.
 
-Words with multiple occurrence of letters are not allowed. Proper names are not allowed.
+- Remember, words with multiple occurrences of letters are not allowed, and proper names are not allowed either.
 
 ## How this package works
 

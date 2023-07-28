@@ -1,3 +1,19 @@
+# 0.1.1
+
+## Features
+
+- Adding github workflows
+
+## Fixes
+
+- Test cases
+
+# 0.1.0
+
+## Features
+
+- Removed dependency on external dictionary library. Now using own dictionary.
+
 # 0.0.5
 
 ## Fixes
